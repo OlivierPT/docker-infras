@@ -9,12 +9,11 @@
 #       -e DISPLAY=${DISPLAY} olivierpt/atom &
 #
 # BASE IMAGE: Centos LSB
-#FROM olivierpt/centos:7-lsb
-FROM centos:7
+FROM olivierpt/centos-lsb
 
 MAINTAINER olivier.pillaudtirard@gmail.com
 
-ENV ATOM_VERSION v1.3.1
+ENV ATOM_VERSION v1.5.4
 
 RUN yum update -y && \
   yum install -y git \
@@ -41,7 +40,7 @@ RUN yum localinstall -y /tmp/atom.rpm && \
 
 RUN useradd -d /home/atom -m atom
 
-RUN dbus-uuidgen --ensure=/etc/machine-id
+RUN dbus-uuidgen > /etc/machine-id
 
 USER atom
 
