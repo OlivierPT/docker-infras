@@ -1,0 +1,8 @@
+atom:
+  image: olivierpt/atom
+  volumes:
+  - /tmp/.X11-unix:/tmp/.X11-unix
+  - /dev/shm:/dev/shm
+  - ${HOME}:/home/atom
+  environment:
+  - DISPLAY=${DISPLAY}
