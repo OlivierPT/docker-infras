@@ -13,6 +13,14 @@ logstash:
     - "5000:5000"
   links:
     - elasticsearch
+fluentd:
+  image: fluent/fluentd:latest
+  volumes:
+    - /home/olivier/workspaces/docker-infras/fluentd/conf:/fluentd/etc
+  ports:
+    - "24224:24224"
+  environment:
+    - FLUENTD_CONF=stdout.conf
 kibana:
   build: kibana/
   volumes:
