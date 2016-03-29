@@ -7,11 +7,11 @@ elasticsearch:
 fluentd:
   build: fluentd/
   volumes:
-    - ./conf:/fluentd/etc
+    - ./fluentd/conf:/fluentd/etc
   ports:
     - "24224:24224"
   environment:
-    - FLUENTD_CONF=fluentd.conf
+    - FLUENTD_CONF=fluent.conf
   links:
     - elasticsearch
 kibana:
