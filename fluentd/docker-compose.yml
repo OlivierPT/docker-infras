@@ -1,0 +1,9 @@
+fluentd:
+  build: client/
+  volumes:
+    - /home/olivier/workspaces/docker-infras/fluentd/conf:/fluentd/etc
+  ports:
+    - "24224:24224"
+    - "42185:42185"
+  environment:
+    - FLUENTD_CONF=stdout.conf
