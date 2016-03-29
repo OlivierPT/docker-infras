@@ -4,23 +4,16 @@ elasticsearch:
   ports:
     - "9200:9200"
     - "9300:9300"
-logstash:
-  image: logstash:latest
-  command: logstash -f /etc/logstash/conf.d/logstash.conf
-  volumes:
-    - ./logstash/config:/etc/logstash/conf.d
-  ports:
-    - "5000:5000"
-  links:
-    - elasticsearch
 fluentd:
-  image: fluent/fluentd:latest
+  build: fluentd/
   volumes:
-    - /home/olivier/workspaces/docker-infras/fluentd/conf:/fluentd/etc
+    - ./conf:/fluentd/etc
   ports:
     - "24224:24224"
   environment:
-    - FLUENTD_CONF=stdout.conf
+    - FLUENTD_CONF=fluentd.conf
+  links:
+    - elasticsearch
 kibana:
   build: kibana/
   volumes:
