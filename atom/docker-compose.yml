@@ -6,3 +6,4 @@ atom:
   - ${HOME}:/home/atom
   environment:
   - DISPLAY=${DISPLAY}
+  log_driver: syslog
