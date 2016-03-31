@@ -1,0 +1,9 @@
+input:
+  period: 10
+  procs: [".*"]
+
+output:
+  elasticsearch:
+    hosts: ["172.17.0.1:9200"]
+    template:
+      path: "topbeat.template.json"
