@@ -1,0 +1,11 @@
+logstash:
+  build: logstash/
+  command: logstash -f /etc/logstash/conf.d/logstash.conf
+  volumes:
+    - ./logstash/config:/etc/logstash/conf.d
+  ports:
+    - "5044:5044"
+rabbitmq:
+  image: rabbitmq
+  ports:
+    - 5672:5672
