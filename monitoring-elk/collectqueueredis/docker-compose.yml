@@ -9,8 +9,6 @@ logstash-input:
     - redis
 redis:
   image: redis
-  ports:
-    - 6379:6379
 logstash-output:
   build: logstash/
   command: logstash -f /etc/logstash/conf.d/logstash-output.conf
