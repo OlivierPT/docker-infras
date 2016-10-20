@@ -1,0 +1,9 @@
+input:
+  period: 10
+  procs: [".*"]
+
+output:
+  logstash:
+    hosts: ["172.17.0.6:5044"]
+#    template:
+#      path: "topbeat.template.json"

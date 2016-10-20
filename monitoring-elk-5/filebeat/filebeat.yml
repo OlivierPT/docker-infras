@@ -1,0 +1,15 @@
+filebeat:
+ prospectors:
+  -
+    paths:
+     - "/var/log/messages"
+     - "/tmp/echolog"
+     - "/tmp/cdtng.log"
+     - "/tmp/cdtng_json.log"
+     - "/tmp/applogs/*/*.log"
+
+output:
+  logstash:
+    hosts: ["172.17.0.6:5044"]
+#    template:
+#      path: "filebeat.template.json"

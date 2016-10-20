@@ -1,0 +1,18 @@
+logstash-input:
+  build: logstash/
+  command: logstash -f /etc/logstash/conf.d/logstash-input.conf
+  volumes:
+    - ./logstash/config:/etc/logstash/conf.d
+  ports:
+    - "5044:5044"
+  links:
+    - redis
+redis:
+  image: redis
+logstash-output:
+  build: logstash/
+  command: logstash -f /etc/logstash/conf.d/logstash-output.conf
+  volumes:
+    - ./logstash/config:/etc/logstash/conf.d
+  links:
+    - redis
