@@ -1,18 +1,25 @@
-logstash-input:
-  build: logstash/
-  command: logstash -f /etc/logstash/conf.d/logstash-input.conf
-  volumes:
-    - ./logstash/config:/etc/logstash/conf.d
-  ports:
-    - "5044:5044"
-  links:
-    - redis
-redis:
-  image: redis
-logstash-output:
-  build: logstash/
-  command: logstash -f /etc/logstash/conf.d/logstash-output.conf
-  volumes:
-    - ./logstash/config:/etc/logstash/conf.d
-  links:
-    - redis
+version: '2'
+services:
+  logstash-input:
+    build: logstash/
+    command: logstash -f /etc/logstash/conf.d/logstash-input.conf
+    volumes:
+      - ./logstash/config:/etc/logstash/conf.d
+    ports:
+      - "5044:5044"
+    links:
+      - redis
+    mem_limit: 128m
+  redis:
+    build: redis/
+    mem_limit: 256m
+  logstash-output:
+    build: logstash/
+    command: logstash -f /etc/logstash/conf.d/logstash-output.conf
+    volumes:
+      - ./logstash/config:/etc/logstash/conf.d
+    links:
+      - redis
+    external_links:
+      - indexreporting_elasticsearch
+    mem_limit: 128m
