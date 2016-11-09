@@ -7,12 +7,14 @@ artifactory:
     - /var/opt/jfrog/artifactory/logs
     - /var/opt/jfrog/artifactory/backup
     - /var/opt/jfrog/artifactory/etc
+jenkins-data:
+  build: jenkins-data
 jenkins:
   image: jenkins:alpine
-  volumes:
-    - $HOME/jenkins:/var/jenkins_home
+  volumes_from:
+    - jenkins-data
   ports:
     - "50000:50000"
-    - "8080:8080"
+    - "8082:8080"
   links:
     - artifactory
