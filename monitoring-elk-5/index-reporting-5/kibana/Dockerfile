@@ -1,4 +1,4 @@
-FROM kibana:5.0.0-rc1
+FROM kibana:5.1.1
 
 RUN apt-get update && apt-get install -y netcat
 

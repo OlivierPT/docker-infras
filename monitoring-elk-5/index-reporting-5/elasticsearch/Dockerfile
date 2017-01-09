@@ -1,1 +1,1 @@
-FROM elasticsearch:5.0.0-rc1
+FROM elasticsearch:5.1.1
