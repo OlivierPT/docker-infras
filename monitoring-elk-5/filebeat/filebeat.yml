@@ -8,8 +8,10 @@ filebeat:
      - "/tmp/cdtng_json.log"
      - "/tmp/applogs/*/*.log"
 
-output:
-  logstash:
-    hosts: ["172.17.0.6:5044"]
-#    template:
-#      path: "filebeat.template.json"
+       #output.elasticsearch:
+       #hosts: ["http://localhost:9200"]
+       #template.enabled: true
+       #template.path: "filebeat.template.json"
+       #template.overwrite: false
+output.logstash:
+  hosts: ["localhost:5044"]

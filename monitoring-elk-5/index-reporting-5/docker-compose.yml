@@ -22,3 +22,7 @@ logstash:
     - "5044:5044"
   links:
     - elasticsearch
+    - redis
+redis:
+  build: redis/
+  mem_limit: 256m
