@@ -23,13 +23,13 @@ metricbeat.modules:
     #- core
 
     # IO stats
-    #- diskio
+    - diskio
 
     # Per filesystem stats
     - filesystem
 
     # File system summary stats
-    - fsstat
+    #- fsstat
 
     # Memory stats
     - memory
@@ -59,6 +59,21 @@ metricbeat.modules:
 # output.
 #fields:
 #  env: staging
+
+processors:
+  - drop_event:
+     when:
+       and:
+         - equals:
+            metricset.name: "filesystem"
+         - or:
+           - not.equals:
+              system.filesystem.mount_point: "/tmp"
+           - not.equals:
+              system.filesystem.mount_point: "/scratch"
+           - not.equals:
+              system.filesystem.mount_point: "/var"
+          
 
 #================================ Outputs =====================================
 
