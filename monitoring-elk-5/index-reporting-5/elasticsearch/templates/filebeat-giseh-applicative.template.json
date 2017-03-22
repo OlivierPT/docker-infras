@@ -1,0 +1,94 @@
+{
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [
+        {
+          "strings_as_keyword": {
+            "mapping": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            },
+            "match_mapping_type": "string"
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@start_time": {
+          "type": "date"
+        },
+        "@end_time": {
+          "type": "date"
+        },
+        "giseh": {
+          "properties": {
+            "cdtng": {
+              "properties": {
+                "hostname": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "kernel": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "architecture": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "env": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "user": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "group": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "application": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "command": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "version": {
+                  "ignore_above": 1024,
+                  "type": "keyword"
+                },
+                "start_time": {
+                  "ignore_above": 1024,
+                  "type": "text"
+                },
+                "end_time": {
+                  "ignore_above": 1024,
+                  "type": "text"
+                },
+                "exec_time": {
+                  "ignore_above": 1024,
+                  "type": "long"
+                }
+              }
+            },
+          }
+        },
+        "tags": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "type": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        }
+      }
+    }
+  },
+  "order": 1,
+  "template": "events-filebeat-giseh-applicative"
+}
