@@ -1,0 +1,34 @@
+docker pull centos:latest
+
+docker run -it -h container -p 10010:10010 centos:latest /bin/bash
+
+cd /etc/yum.repos.d
+
+curl -O https://winswitch.org/downloads/CentOS/winswitch.repo
+
+yum repolist
+
+yum -y install epel-release
+
+yum repolist
+
+yum install pangox-compat
+
+yum install xpra
+
+yum install which
+
+yum install  xorg-x11-server-Xvfb
+
+yum install emacs
+
+dbus-uuidgen >/etc/machine-id
+
+useradd -m xprauser
+
+passwd xprauser
+
+
+su - xprauser
+
+xpra start :100 --start-child=emacs --bind-tcp=0.0.0.0:10010
