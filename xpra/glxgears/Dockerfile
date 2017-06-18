@@ -33,17 +33,11 @@ RUN yum update -y && \
 
 RUN yum install -y glx-utils
 
-#RUN useradd -d /home/userxpra -m userxpra
-
 RUN dbus-uuidgen > /etc/machine-id
-
-#USER userxpra
-#RUN mkdir /home/user1 && chmod 777 /home/user1
-
 
 # expose HTML5 port (experimental)
 EXPOSE 8090
 # expose raw TCP port
-EXPOSE 10020
+EXPOSE 10010
 
 CMD ["xpra", "start", ":100", "--start-child=glxgears",  "--daemon=off", "--bind-tcp=0.0.0.0:10020", "--html=0.0.0.0:8080"]

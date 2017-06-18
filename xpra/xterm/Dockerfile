@@ -28,13 +28,7 @@ RUN yum install -y pangox-compat \
 
 RUN yum install -y xterm
 
-#RUN useradd -d /home/userxpra -m userxpra
-
 RUN dbus-uuidgen > /etc/machine-id
-
-#USER userxpra
-#RUN mkdir /home/user1 && chmod 777 /home/user1
-
 
 # expose HTML5 port (experimental)
 EXPOSE 8080
