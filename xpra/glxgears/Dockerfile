@@ -42,8 +42,8 @@ RUN dbus-uuidgen > /etc/machine-id
 
 
 # expose HTML5 port (experimental)
-EXPOSE 8080
+EXPOSE 8090
 # expose raw TCP port
-EXPOSE 10010
+EXPOSE 10020
 
-CMD ["xpra", "start", ":100", "--start-child=glxgears",  "--daemon=off", "--bind-tcp=0.0.0.0:10010", "--html=0.0.0.0:8080"]
+CMD ["xpra", "start", ":100", "--start-child=glxgears",  "--daemon=off", "--bind-tcp=0.0.0.0:10020", "--html=0.0.0.0:8080"]
