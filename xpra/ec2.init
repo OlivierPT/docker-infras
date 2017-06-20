@@ -1,0 +1,17 @@
+#!/bin/bash
+yum update -y
+yum install -y docker
+groupadd docker
+usermod -aG docker ec2-user
+/etc/init.d/docker start
+/etc/init.d/docker enable
+
+useradd xpra-user
+useradd xpra-user2
+useradd xpra-user3
+
+LOCALIP=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
+
+docker swarm join \
+    --token SWMTKN-1-5djxe2t7eexn5fk3fhfqgbodtq0dsgbu3zwcxiynwuiy4ar6vz-346fz6pgkein6br4elypni7c2 \
+    172.31.5.223:2377 --advertise-addr $LOCALIP:2377 --listen-addr $LOCALIP:2377
