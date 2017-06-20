@@ -35,4 +35,5 @@ EXPOSE 8080
 # expose raw TCP port
 EXPOSE 10010
 
-CMD ["xpra", "start", ":100", "--start-child=xterm", "--daemon=off", "--bind-tcp=0.0.0.0:10010", "--html=0.0.0.0:8080"]
+ENTRYPOINT ["xpra", "start", ":100", "--daemon=off", "--bind-tcp=0.0.0.0:10010", "--html=0.0.0.0:8080"]
+CMD ["--start-child=xterm"]
