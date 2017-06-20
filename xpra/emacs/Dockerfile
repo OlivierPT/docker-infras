@@ -25,11 +25,7 @@ RUN yum install -y pangox-compat \
     xorg-x11-server-Xvfb \
     emacs
 
-RUN useradd -d /home/userxpra -m userxpra
-
 RUN dbus-uuidgen > /etc/machine-id
-
-USER userxpra
 
 # expose HTML5 port (experimental)
 EXPOSE 8080
