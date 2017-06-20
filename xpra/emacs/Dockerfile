@@ -32,4 +32,6 @@ EXPOSE 8080
 # expose raw TCP port
 EXPOSE 10010
 
-CMD ["xpra", "start", ":100", "--start-child=emacs",  "--daemon=off", "--bind-tcp=0.0.0.0:10010", "--html=0.0.0.0:8080"]
+#CMD ["xpra", "start", ":100", "--start-child=emacs",  "--daemon=off", "--bind-tcp=0.0.0.0:10010", "--html=0.0.0.0:8080"]
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
