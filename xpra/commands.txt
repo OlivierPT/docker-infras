@@ -1,34 +1,8 @@
-docker pull centos:latest
+#Start EMACS with Docker/XPRA
 
-docker run -it -h container -p 10010:10010 centos:latest /bin/bash
+docker service create --name emacs-xpra-user2 --replicas 1 -p 10020:10010 --mount type=bind,source=/home,destination=/home --mount type=bind,source=/etc/group,destination=/etc/group,ro --mount type=bind,source=/etc/passwd,destination=/etc/passwd,ro -u $( id -u xpra-user2 ):$( id -g xpra-user2 ) olivierpt/xpra-emacs:latest /home/xpra-user2/emacs-file
 
-cd /etc/yum.repos.d
-
-curl -O https://winswitch.org/downloads/CentOS/winswitch.repo
-
-yum repolist
-
-yum -y install epel-release
-
-yum repolist
-
-yum install pangox-compat
-
-yum install xpra
-
-yum install which
-
-yum install  xorg-x11-server-Xvfb
-
-yum install emacs
-
-dbus-uuidgen >/etc/machine-id
-
-useradd -m xprauser
-
-passwd xprauser
+#Start XTERM with Docker/XPRA
 
 
-su - xprauser
-
-xpra start :100 --start-child=emacs --bind-tcp=0.0.0.0:10010
+#Start GLXGears with Docker/XPRA
