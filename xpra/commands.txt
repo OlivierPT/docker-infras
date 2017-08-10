@@ -1,6 +1,6 @@
 #Start EMACS with Docker/XPRA
 
-docker service create --name emacs-xpra-user2 --replicas 1 -p 10020:10010 --mount type=bind,source=/home,destination=/home --mount type=bind,source=/etc/group,destination=/etc/group,ro --mount type=bind,source=/etc/passwd,destination=/etc/passwd,ro -u $( id -u xpra-user2 ):$( id -g xpra-user2 ) olivierpt/xpra-emacs:latest /home/xpra-user2/emacs-file
+docker service create --name emacs-xpra-user2 --replicas 1 -p 10020:10010 --mount type=bind,source=/home,destination=/home --mount type=bind,source=/etc/group,destination=/etc/group,ro --mount type=bind,source=/etc/passwd,destination=/etc/passwd,ro -u $( id -u xpra-user2 ):$( id -g xpra-user2 ) olivierpt/xpra-emacs:latest
 
 #Start XTERM with Docker/XPRA
 
